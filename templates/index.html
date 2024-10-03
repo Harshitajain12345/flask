@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stone, Paper, Scissors</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Stone, Paper, Scissors</h1>
+
+    <form action="{{ url_for('play') }}" method="POST">
+        <label for="choice">Choose your move:</label>
+        <select name="choice" id="choice">
+            <option value="Stone">Stone</option>
+            <option value="Paper">Paper</option>
+            <option value="Scissors">Scissors</option>
+        </select>
+        <button type="submit">Play</button>
+    </form>
+
+    {% if player_choice and computer_choice %}
+    <div class="result">
+        <p>You chose: <strong>{{ player_choice }}</strong></p>
+        <p>Computer chose: <strong>{{ computer_choice }}</strong></p>
+        <p><strong>{{ result }}</strong></p>
+    </div>
+    {% endif %}
+</body>
+</html>
